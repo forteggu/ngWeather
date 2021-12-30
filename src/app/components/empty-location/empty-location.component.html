@@ -1,9 +1,9 @@
 <div class="emptyLocation-wrapper text-white bg-dark text-center">
     <form action="">
         <div class="input-group mb-3">
-            <input type="text" #searchLocationInput (keydown.enter)="searchLocation(#searchLocationInput)" class="form-control" placeholder="Search location..."
+            <input type="text" #searchLocationInput (keydown.enter)="searchLocation(searchLocationInput)" class="form-control" placeholder="Search location..."
                 aria-label="Search location..." aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" (click)="searchLocation(#searchLocationInput)" type="button" id="button-addon2">Search</button>
+            <button class="btn btn-outline-secondary" (click)="searchLocation(searchLocationInput)" type="button" id="button-addon2">Search</button>
         </div>
     </form>
 </div>
