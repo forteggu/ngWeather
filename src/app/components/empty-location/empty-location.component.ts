@@ -12,4 +12,7 @@ export class EmptyLocationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  searchLocation(element:any){
+    
+  }
 }
