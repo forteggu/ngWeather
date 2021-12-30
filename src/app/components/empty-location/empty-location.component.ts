@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { catchError, map } from 'rxjs';
-import { ErrorResponse, Weather, WeatherResponse } from 'src/app/interfaces';
+import { ErrorResponse, WeatherResponse } from 'src/app/interfaces';
 import { DataService } from 'src/app/services/data.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'emptylocation',
+  selector: 'emptyLocation',
   templateUrl: './empty-location.component.html',
   styleUrls: ['./empty-location.component.scss'],
 })
@@ -36,10 +35,7 @@ export class EmptyLocationComponent implements OnInit {
     if (
       savedLocations.findIndex((i) => i.name == serviceResponse.name) === -1
     ) {
-      localStorage.setItem(
-        environment.savedLocations,
-        JSON.stringify([...savedLocations, serviceResponse])
-      );
+      this._dataService.updateLocations([...savedLocations, serviceResponse]);
     } else {
       this.showAlert = true;
       this.alertMessage = 'Location already in use';
