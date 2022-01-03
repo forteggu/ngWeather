@@ -4,14 +4,23 @@ import { WeatherResponse } from 'src/app/interfaces';
 @Component({
   selector: 'weatherLocation',
   templateUrl: './weather-location.component.html',
-  styleUrls: ['./weather-location.component.scss']
+  styleUrls: ['./weather-location.component.scss'],
 })
 export class WeatherLocationComponent implements OnInit {
-  @Input("location") wLocation!:WeatherResponse;
-  date:string=new Date().toDateString();
-  constructor() { }
+  @Input('location') wLocation!: WeatherResponse;
+  date: string = new Date().toDateString();
+  deleteLocation: boolean = false;
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  openDeleteLocationModal(name: string) {
+    this.deleteLocation = true;
   }
-
+  removeLocation() {
+    console.log("we remove the location",this.wLocation);
+  }
+  cancelRemoveLocation() {
+    this.deleteLocation=false;
+  }
 }
