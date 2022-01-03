@@ -1,3 +1,10 @@
+export enum locationModes{
+    weather,
+    hourly,
+    forecast,
+    delete
+    
+  } 
 export interface ErrorResponse {
     headers:    Headers;
     status:     number;

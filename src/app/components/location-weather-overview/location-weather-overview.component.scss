@@ -1,0 +1,35 @@
+.customContainer{
+    display: flex;
+    flex-flow: column nowrap;
+}
+.locationContent{
+    flex-grow: 9;
+    display: flex;
+    flex-flow: column nowrap;
+}
+.button_list{
+    display: flex;
+    justify-content: space-between;
+    margin: 0.25em
+}
+
+.locationAndDate h1{
+    font-size: 3em;
+}
+.locationAndDate{
+    flex-grow: 3;  
+    align-content: center; 
+}
+
+.temperature{
+    font-size: 4em ;
+    flex-grow: 4;
+}
+.weatherDescription{
+    flex-grow: 3;
+}
+.furtherDetail{
+    align-items: stretch;
+    align-content: stretch;
+    flex-grow: 2;
+}

@@ -1,0 +1,24 @@
+<div  class="h100 locationContent">
+    <div class="row locationAndDate text-center">
+        <h1>{{wLocation.name}}</h1>
+        <p>{{date}}</p>
+    </div>
+    <div class="row temperature m-1 text-center">
+        <p>
+            {{wLocation.main.temp | number:'1.0-0'}}ºC
+        </p>
+    </div>
+    <div class="row weatherDescription m-1 text-center">
+        <p>
+            {{wLocation.weather[0].description}}
+        </p>
+    </div>
+    <div class="row furtherDetail text-center">
+        <!--(add icon to display info about what's each thing)-->
+        <div class="col-12">
+            Min: {{wLocation.main.temp_min | number:'1.0-0'}}ºC | Max: {{wLocation.main.temp_max |
+                number:'1.0-0'}}ºC
+            </div>
+        </div>
+        
+    </div>

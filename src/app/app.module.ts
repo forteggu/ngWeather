@@ -6,21 +6,22 @@ import { AppComponent } from './app.component';
 import { EmptyLocationComponent } from './components/empty-location/empty-location.component';
 import { WeatherLocationComponent } from './components/weather-location/weather-location.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { LocationWeatherOverviewComponent } from './components/location-weather-overview/location-weather-overview.component';
+import { LocationWeatherHourlyComponent } from './components/location-weather-hourly/location-weather-hourly.component';
+import { LocationWeatherForecastComponent } from './components/location-weather-forecast/location-weather-forecast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmptyLocationComponent,
-    WeatherLocationComponent
+    WeatherLocationComponent,
+    LocationWeatherOverviewComponent,
+    LocationWeatherHourlyComponent,
+    LocationWeatherForecastComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
