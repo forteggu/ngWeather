@@ -12,6 +12,7 @@ import { LocationWeatherHourlyComponent } from './components/location-weather-ho
 import { LocationWeatherForecastComponent } from './components/location-weather-forecast/location-weather-forecast.component';
 import { LocationUpdatingComponent } from './components/location-updating/location-updating.component';
 import { LocationErrorComponent } from './components/location-error/location-error.component';
+import { CacheAlertComponent } from './components/cache-alert/cache-alert.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LocationErrorComponent } from './components/location-error/location-err
     LocationWeatherForecastComponent,
     LocationUpdatingComponent,
     LocationErrorComponent,
+    CacheAlertComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

@@ -4,7 +4,7 @@
             <form action="">
                 <div class="input-group mb-3 text-white bg-dark ">
                     <input type="text" (input)="clearAlert()" (keydown.enter)="searchLocation()"
-                        [(ngModel)]="newLocation" name="newLocationInput" class="form-control"
+                        [(ngModel)]="newLocation" [disabled]="isSearching" name="newLocationInput" class="form-control"
                         placeholder="Search location..." aria-label="Search location..."
                         aria-describedby="button-addon2">
                     <button [disabled]="isSearching" class="btn btn-outline-secondary" (click)="searchLocation()"

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { WeatherResponse } from 'src/app/interfaces';
+import { locationNameId, WeatherResponse } from 'src/app/interfaces';
 
 @Component({
   selector: 'locationWeatherHourly',

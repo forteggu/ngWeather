@@ -7,14 +7,8 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class LocationErrorComponent implements OnInit {
   @Input("msg") msg:string="";
-  @Input("locationName") locationName:string="";
-  @Output() retryEvent = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  retry(){
-    this.retryEvent.emit();
   }
 }

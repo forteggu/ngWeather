@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ErrorResponse, WeatherResponse } from 'src/app/interfaces';
+import {
+  ErrorResponse,
+  locationNameId,
+  WeatherResponse,
+} from 'src/app/interfaces';
 import { DataService } from 'src/app/services/data.service';
 import { environment } from 'src/environments/environment';
 
@@ -30,13 +34,15 @@ export class EmptyLocationComponent implements OnInit {
   }
   createNewLocation(serviceResponse: WeatherResponse) {
     this.isSearching = false;
-    let savedLocations: WeatherResponse[] =
+    let savedLocations: locationNameId[] =
       JSON.parse(localStorage.getItem(environment.savedLocations)!) || [];
-    if (
-      savedLocations.findIndex((i) => i.id == serviceResponse.id) === -1
-    ) {
+    if (savedLocations.findIndex((i) => i.id == serviceResponse.id) === -1) {
+      this._dataService.updateLocations([
+        ...savedLocations,
+        { name: serviceResponse.name, id: serviceResponse.id },
+      ]);
       serviceResponse.lastUpdated = new Date().toDateString();
-      this._dataService.updateLocations([...savedLocations, serviceResponse]);
+      this._dataService.updateLocationOfflineData(serviceResponse);
     } else {
       this.showAlert = true;
       this.alertMessage = 'Location already in use';

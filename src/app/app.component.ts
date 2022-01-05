@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { WeatherResponse } from './interfaces';
+import { locationNameId, WeatherResponse } from './interfaces';
 import { DataService } from './services/data.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { DataService } from './services/data.service';
 })
 export class AppComponent implements OnInit {
   title = 'weatherAppAngular';
-  wLocations: WeatherResponse[] = [];
+  wLocations: locationNameId[] = [];
   isAddingNewLocation: boolean = false;
   needUpdate: WeatherResponse[] = [];
 

@@ -1,4 +1,7 @@
-<div *ngIf="mode!==localModes.delete" class="container h100 customContainer">
+<div *ngIf="error" class="h100">
+    <locationError [msg]="errorMessage"></locationError>
+</div>
+<div *ngIf="mode!==localModes.delete && !error" class="container h100 customContainer">
     <div class="row button_list">
         <button (click)="changeMode(localModes.weather)" class="btn btn-light btn-lg toggleDetails">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -24,6 +27,9 @@
             </svg>
         </button>
     </div>
+    <div *ngIf="loading" class="h100">
+        <locationUpdating [locationName]="locationNameId.name"></locationUpdating>
+    </div>
     <div *ngIf="mode===localModes.weather" class="h100">
         <locationWeatherOverview [data]="wLocation"></locationWeatherOverview>
     </div>
@@ -47,7 +53,7 @@
     </div>
 </div>
 
-<div *ngIf="mode===localModes.delete" class=" h100 centerFlex">
+<div *ngIf="mode===localModes.delete && !error" class=" h100 centerFlex">
     <div class="container deleteLocationContainer text-center">
         <h1>Are you sure you want to delete this location?</h1>
         <div class="row button_list mt-5">

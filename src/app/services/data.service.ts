@@ -2,29 +2,29 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { WeatherResponse } from '../interfaces';
+import { locationNameId, WeatherResponse } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  locationsObservable = new Subject<WeatherResponse[]>();
+  locationsObservable = new Subject<locationNameId[]>();
   constructor(private _httpService: HttpClient) {}
 
-  updateLocations(value: WeatherResponse[]) {
+  updateLocations(value: locationNameId[]) {
     localStorage.setItem(environment.savedLocations, JSON.stringify(value));
     return this.locationsObservable.next(value);
   }
 
-  updateLocation(location: WeatherResponse) {
-    let locations:WeatherResponse[]=JSON.parse(localStorage.getItem(environment.savedLocations) || "[]");
+  updateLocationOfflineData(location: WeatherResponse) {
+    let locations:WeatherResponse[]=JSON.parse(localStorage.getItem(environment.savedLocationsOfflineData) || "[]");
     let lIndex = locations.findIndex(i=>{
-      i.id===location.id
+      return i.id===location.id
     });
-    if(lIndex){
+    if(lIndex!==-1){
       locations.splice(lIndex,1);
     }
-    this.updateLocations([...locations,location]);
+    localStorage.setItem(environment.savedLocationsOfflineData,JSON.stringify(([...locations,location])));
   }
 
   getLocationsSubject() {
@@ -41,6 +41,15 @@ export class DataService {
     return this._httpService.get(environment.endPointWeather, {
       params: {
         q: location,
+        appid: environment.appid,
+        units: environment.metric,
+      },
+    });
+  }
+  getLocationsWeatherById(location: number) {
+    return this._httpService.get(environment.endPointWeather, {
+      params: {
+        id: location,
         appid: environment.appid,
         units: environment.metric,
       },
