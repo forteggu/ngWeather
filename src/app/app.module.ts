@@ -11,6 +11,7 @@ import { LocationWeatherOverviewComponent } from './components/location-weather-
 import { LocationWeatherHourlyComponent } from './components/location-weather-hourly/location-weather-hourly.component';
 import { LocationWeatherForecastComponent } from './components/location-weather-forecast/location-weather-forecast.component';
 import { LocationUpdatingComponent } from './components/location-updating/location-updating.component';
+import { LocationErrorComponent } from './components/location-error/location-error.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LocationUpdatingComponent } from './components/location-updating/locati
     LocationWeatherHourlyComponent,
     LocationWeatherForecastComponent,
     LocationUpdatingComponent,
+    LocationErrorComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
