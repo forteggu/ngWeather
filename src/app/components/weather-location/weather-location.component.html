@@ -33,7 +33,9 @@
     <div *ngIf="mode===localModes.forecast" class="h100">
         <locationWeatherForecast [data]="wLocation"></locationWeatherForecast>
     </div>
-
+    <div *ngIf="mode===localModes.updating" class="h100">
+        <locationUpdating [locationName]="wLocation.name"></locationUpdating>
+    </div>
     <div class="row text-center mt-1">
         <div class="">
             <button (click)="changeMode(localModes.delete)" class="btn btn-light btn-lg btn-lg trash"><svg

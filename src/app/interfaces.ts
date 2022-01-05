@@ -2,7 +2,9 @@ export enum locationModes{
     weather,
     hourly,
     forecast,
-    delete
+    delete,
+    updating,
+    error
     
   } 
 export interface ErrorResponse {
@@ -43,6 +45,7 @@ export interface WeatherResponse {
     id:         number;
     name:       string;
     cod:        number;
+    lastUpdated?: string;
 }
 
 export interface Clouds {

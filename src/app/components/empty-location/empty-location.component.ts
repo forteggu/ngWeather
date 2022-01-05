@@ -21,7 +21,7 @@ export class EmptyLocationComponent implements OnInit {
   searchLocation() {
     if (!this.isSearching) {
       this.isSearching = true;
-      this._dataService.getLocationsWeatherTest(this.newLocation).subscribe({
+      this._dataService.getLocationsWeather(this.newLocation).subscribe({
         next: (resp) => this.createNewLocation(<WeatherResponse>resp),
         error: (err) => this.reportError(<ErrorResponse>err),
         complete: () => {},
@@ -33,8 +33,9 @@ export class EmptyLocationComponent implements OnInit {
     let savedLocations: WeatherResponse[] =
       JSON.parse(localStorage.getItem(environment.savedLocations)!) || [];
     if (
-      savedLocations.findIndex((i) => i.name == serviceResponse.name) === -1
+      savedLocations.findIndex((i) => i.id == serviceResponse.id) === -1
     ) {
+      serviceResponse.lastUpdated = new Date().toDateString();
       this._dataService.updateLocations([...savedLocations, serviceResponse]);
     } else {
       this.showAlert = true;

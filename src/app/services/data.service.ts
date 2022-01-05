@@ -15,6 +15,18 @@ export class DataService {
     localStorage.setItem(environment.savedLocations, JSON.stringify(value));
     return this.locationsObservable.next(value);
   }
+
+  updateLocation(location: WeatherResponse) {
+    let locations:WeatherResponse[]=JSON.parse(localStorage.getItem(environment.savedLocations) || "[]");
+    let lIndex = locations.findIndex(i=>{
+      i.id===location.id
+    });
+    if(lIndex){
+      locations.splice(lIndex,1);
+    }
+    this.updateLocations([...locations,location]);
+  }
+
   getLocationsSubject() {
     return this.locationsObservable.asObservable();
   }
@@ -25,7 +37,7 @@ export class DataService {
       )
     );
   }
-  getLocationsWeatherTest(location: string) {
+  getLocationsWeather(location: string) {
     return this._httpService.get(environment.endPointWeather, {
       params: {
         q: location,

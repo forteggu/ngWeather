@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LocationWeatherOverviewComponent } from './components/location-weather-overview/location-weather-overview.component';
 import { LocationWeatherHourlyComponent } from './components/location-weather-hourly/location-weather-hourly.component';
 import { LocationWeatherForecastComponent } from './components/location-weather-forecast/location-weather-forecast.component';
+import { LocationUpdatingComponent } from './components/location-updating/location-updating.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LocationWeatherForecastComponent } from './components/location-weather-
     LocationWeatherOverviewComponent,
     LocationWeatherHourlyComponent,
     LocationWeatherForecastComponent,
+    LocationUpdatingComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
