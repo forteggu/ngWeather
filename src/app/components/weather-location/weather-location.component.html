@@ -37,7 +37,7 @@
         <locationWeatherHourly [data]="wLocation.hourly" [showAlert]="showAlert"></locationWeatherHourly>
     </div>
     <div *ngIf="mode===localModes.forecast" class="h100">
-        <locationWeatherForecast [data]="wLocation" [showAlert]="showAlert"></locationWeatherForecast>
+        <locationWeatherForecast [data]="wLocation.daily" [showAlert]="showAlert"></locationWeatherForecast>
     </div>
     <div class="row text-center mt-1">
         <div class="">

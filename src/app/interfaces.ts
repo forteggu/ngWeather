@@ -180,6 +180,7 @@ export interface Daily {
   pop: number;
   uvi: number;
   rain?: number;
+  transformedTime?:Date;
 }
 
 export interface FeelsLike {

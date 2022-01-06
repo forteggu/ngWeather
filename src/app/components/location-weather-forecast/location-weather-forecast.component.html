@@ -1,1 +1,32 @@
-<p>location-weather-forecast works!</p>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path
+            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+    </symbol>
+</svg>
+<div class="h100 daysContainer">
+    <div class="row" *ngIf="showAlert">
+        <cacheAlert></cacheAlert>
+    </div>
+    <div class="dateHeader text-center p-2">
+
+        <div class="text-center">
+
+        </div>
+        <!--<button class="btn btn-sm btn-light">i</button>-->
+        <div class="">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
+                <use xlink:href="#info-fill" />
+            </svg>
+        </div>
+    </div>
+    <div *ngFor="let d of wLocation" class="dayContainer p-2">
+        <div class="dayTime"> {{d.transformedTime | date}}</div>
+        <div class="dayTemp text-center">[{{d.temp.min}}|{{d.temp.min}}]ºC </div>
+        <div class="weather"><img class="weatherIcon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+        </div>
+        <div class="dayRainProb">
+            {{d.pop | percent}}
+        </div>
+    </div>
+</div>
