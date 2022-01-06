@@ -1,23 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import {
-  ErrorResponse,
-  locationNameId,
-  Weather,
-  WeatherResponse,
+  Overview
 } from 'src/app/interfaces';
 import { DataService } from 'src/app/services/data.service';
-import { environment } from 'src/environments/environment';
-
 @Component({
   selector: 'locationWeatherOverview',
   templateUrl: './location-weather-overview.component.html',
   styleUrls: ['./location-weather-overview.component.scss'],
 })
 export class LocationWeatherOverviewComponent implements OnInit {
-  @Input('data') wLocation: WeatherResponse = {} as WeatherResponse;
+  @Input('data') wLocation: Overview = {} as Overview;
   @Input('showAlert') showAlert: boolean = false;
-  constructor(private _dataService: DataService) {}
+  constructor() {}
 
   ngOnInit(): void {
       

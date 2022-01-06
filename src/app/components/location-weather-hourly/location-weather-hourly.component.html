@@ -1,1 +1,17 @@
-<p>location-weather-hourly works!</p>
+<div class="h100 hoursContainer">
+    <div class="row" *ngIf="showAlert">
+        <cacheAlert></cacheAlert>
+    </div>
+    <div *ngFor="let g of groupedData" class="p-2">
+        <div class="dateHeader text-center p-2">
+            {{g.f | date}}
+        </div>
+        <div *ngFor="let h of g.hrs" class="hourContainer p-2">
+            <div class="hourTime">{{h.transformedTime | date:'hh aa' }}</div>
+            <div class="hourTemp text-center">{{h.temp}}ºC | {{h.feels_like}}ºC</div>
+            <div class="iconWrapper"><img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+            </div>
+            <div class="hourRainProb">{{h.pop | percent}}</div>
+        </div>
+    </div>
+</div>

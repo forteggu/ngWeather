@@ -3,7 +3,7 @@
 </div>
 <div *ngIf="mode!==localModes.delete && !error" class="container h100 customContainer">
     <div class="row button_list">
-        <button (click)="changeMode(localModes.weather)" class="btn btn-light btn-lg toggleDetails">
+        <button [disabled]="loading" (click)="changeMode(localModes.weather)" class="btn btn-light btn-lg toggleDetails">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-thermometer-sun" viewBox="0 0 16 16">
                 <path d="M5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585A1.5 1.5 0 0 1 5 12.5z" />
@@ -11,14 +11,14 @@
                     d="M1 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM3.5 1A1.5 1.5 0 0 0 2 2.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0L5 10.486V2.5A1.5 1.5 0 0 0 3.5 1zm5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm4.243 1.757a.5.5 0 0 1 0 .707l-.707.708a.5.5 0 1 1-.708-.708l.708-.707a.5.5 0 0 1 .707 0zM8 5.5a.5.5 0 0 1 .5-.5 3 3 0 1 1 0 6 .5.5 0 0 1 0-1 2 2 0 0 0 0-4 .5.5 0 0 1-.5-.5zM12.5 8a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5zm-1.172 2.828a.5.5 0 0 1 .708 0l.707.708a.5.5 0 0 1-.707.707l-.708-.707a.5.5 0 0 1 0-.708zM8.5 12a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5z" />
             </svg>
         </button>
-        <button (click)="changeMode(localModes.hourly)" class="btn btn-light btn-lg toggleForecast">
+        <button [disabled]="loading" (click)="changeMode(localModes.hourly)" class="btn btn-light btn-lg toggleForecast">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock"
                 viewBox="0 0 16 16">
                 <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
                 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
             </svg>
         </button>
-        <button (click)="changeMode(localModes.forecast)" class="btn btn-light btn-lg toggleForecast">
+        <button [disabled]="loading" (click)="changeMode(localModes.forecast)" class="btn btn-light btn-lg toggleForecast">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-calendar-range" viewBox="0 0 16 16">
                 <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1zM1 9h4a1 1 0 0 1 0 2H1V9z" />
@@ -31,17 +31,17 @@
         <locationUpdating [locationName]="locationNameId.name"></locationUpdating>
     </div>
     <div *ngIf="mode===localModes.weather" class="h100">
-        <locationWeatherOverview [data]="wLocation"></locationWeatherOverview>
+        <locationWeatherOverview [data]="{id:wLocation.id, name:wLocation.name, lastUpdated:wLocation.lastUpdated, weather: wLocation.current}" [showAlert]="showAlert"></locationWeatherOverview>
     </div>
-    <div *ngIf="mode===localModes.hourly" class="h100">
-        <locationWeatherHourly [data]="wLocation"></locationWeatherHourly>
+    <div *ngIf="mode===localModes.hourly" class="h100 overflow-y-scroll">
+        <locationWeatherHourly [data]="wLocation.hourly" [showAlert]="showAlert"></locationWeatherHourly>
     </div>
     <div *ngIf="mode===localModes.forecast" class="h100">
-        <locationWeatherForecast [data]="wLocation"></locationWeatherForecast>
+        <locationWeatherForecast [data]="wLocation" [showAlert]="showAlert"></locationWeatherForecast>
     </div>
     <div class="row text-center mt-1">
         <div class="">
-            <button (click)="changeMode(localModes.delete)" class="btn btn-light btn-lg btn-lg trash"><svg
+            <button [disabled]="loading" (click)="changeMode(localModes.delete)" class="btn btn-light btn-lg btn-lg trash"><svg
                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
                     viewBox="0 0 16 16">
                     <path

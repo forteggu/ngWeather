@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { locationNameId, WeatherResponse } from '../interfaces';
+import { AllInOneWD, Coord, locationModes, locationNameId } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   locationsObservable = new Subject<locationNameId[]>();
+  localModes = locationModes;
   constructor(private _httpService: HttpClient) {}
 
   updateLocations(value: locationNameId[]) {
@@ -16,8 +17,8 @@ export class DataService {
     return this.locationsObservable.next(value);
   }
 
-  updateLocationOfflineData(location: WeatherResponse) {
-    let locations:WeatherResponse[]=JSON.parse(localStorage.getItem(environment.savedLocationsOfflineData) || "[]");
+  updateLocationOfflineData(location: AllInOneWD) {
+    let locations:AllInOneWD[]=JSON.parse(localStorage.getItem(environment.savedLocationsOfflineData) || "[]");
     let lIndex = locations.findIndex(i=>{
       return i.id===location.id
     });
@@ -46,6 +47,17 @@ export class DataService {
       },
     });
   }
+  getAllInOne(l:Coord){
+    return this._httpService.get(environment.endPointAllInOne, {
+      params: {
+        lat: l.lat,
+        lon: l.lon,
+        exclude: "minutely",
+        appid: environment.appid,
+        units: environment.metric,
+      },
+    });
+  }
   getLocationsWeatherById(location: number) {
     return this._httpService.get(environment.endPointWeather, {
       params: {
@@ -53,6 +65,15 @@ export class DataService {
         appid: environment.appid,
         units: environment.metric,
       },
+    });
+  }
+
+  getOfflineData(locationNameId:locationNameId) {
+    let ls: AllInOneWD[] = JSON.parse(
+      localStorage.getItem(environment.savedLocationsOfflineData) || '[]'
+    );
+    return ls.find((x) => {
+      return x.id === locationNameId.id;
     });
   }
 }

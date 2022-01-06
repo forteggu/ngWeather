@@ -9,20 +9,24 @@
     </div>
     <div class="row temperature m-1 text-center">
         <p>
-            {{wLocation.main.temp | number:'1.0-0'}}ºC
+            {{wLocation.weather.temp | number:'1.0-0'}}ºC
         </p>
     </div>
     <div class="row weatherDescription m-1 text-center">
         <p>
-            {{wLocation.weather[0].description}}
+            {{wLocation.weather.weather[0].description}}
         </p>
     </div>
     <div class="row furtherDetail text-center">
         <!--(add icon to display info about what's each thing)-->
         <div class="col-12">
-            Min: {{wLocation.main.temp_min | number:'1.0-0'}}ºC | Max: {{wLocation.main.temp_max |
-            number:'1.0-0'}}ºC
+            Feels Like: {{wLocation.weather.feels_like | number:'1.0-0'}}ºC | Humidity: {{wLocation.weather.humidity}}%
+        </div>
+        <div *ngIf="wLocation.weather.rain" class="col-12">
+            Litres (last Hour): {{wLocation.weather.rain["1h"]}} mm<sup>3</sup>
+        </div>
+        <div *ngIf="wLocation.weather.snow" class="col-12">
+            Snow (last Hour): {{wLocation.weather.snow["1h"]}}mm
         </div>
     </div>
-
 </div>

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endPointForecast:"https://api.openweathermap.org/data/2.5/forecast",
+  endPointAllInOne:"https://api.openweathermap.org/data/2.5/onecall",
   endPointWeather:"https://api.openweathermap.org/data/2.5/weather",
   appid:'5e14aceab3c9ff135c2ec40278677268',
   metric:'metric',
