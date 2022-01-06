@@ -33,20 +33,20 @@ export class EmptyLocationComponent implements OnInit {
       });
     }
   }
-  fetchLocationDataAllInOne(l:WeatherResponse){
+  fetchLocationDataAllInOne(l: WeatherResponse) {
     this._dataService.getAllInOne(l.coord).subscribe({
-      next: (resp) => this.createNewLocation(<AllInOneWD>resp,l),
+      next: (resp) => this.createNewLocation(<AllInOneWD>resp, l),
       error: (err) => this.reportError(<ErrorResponse>err),
       complete: () => {},
     });
   }
-  createNewLocation(aio:AllInOneWD, locationWR: WeatherResponse) {
+  createNewLocation(aio: AllInOneWD, locationWR: WeatherResponse) {
     // Hide the loading component
     this.isSearching = false;
     // Update name and id on aio structure
-    aio.id=locationWR.id;
-    aio.name=locationWR.name;
-    // Get saved Locations 
+    aio.id = locationWR.id;
+    aio.name = locationWR.name;
+    // Get saved Locations
     let savedLocations: locationNameId[] =
       JSON.parse(localStorage.getItem(environment.savedLocations)!) || [];
     // If current location does not exist already we include it
@@ -58,17 +58,19 @@ export class EmptyLocationComponent implements OnInit {
       // Update saved locations to reload the app's content
       this._dataService.updateLocations([
         ...savedLocations,
-        { name: locationWR.name, id: locationWR.id, coord:locationWR.coord },
+        { name: locationWR.name, id: locationWR.id, coord: locationWR.coord },
       ]);
+      const e: HTMLElement = document.getElementById(
+        'customModal_addLocation'
+      ) as HTMLElement;
+      if (e) e.click();
     } else {
       this.showAlert = true;
       this.alertMessage = 'Location already in use';
     }
   }
 
-  saveLocationNameId(){
-    
-  }
+  saveLocationNameId() {}
   reportError(err: ErrorResponse) {
     this.alertMessage = err.error.message;
     this.isSearching = false;

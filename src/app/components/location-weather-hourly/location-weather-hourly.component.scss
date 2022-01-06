@@ -5,12 +5,30 @@
     align-items: center;
     align-content: space-around;
 }
-.iconWrapper>img{
+.dateHeader{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+.dateHeader>div:first-child{
+    flex:9;
+}
+.dateHeader>div:last-child{
+    color: aquamarine;
+}
+.dateHeader>div:last-child:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.weatherIcon{
     height: 70px;
     width: 70px;
 }
-
-.iconWrapper{
+.rainProbIco{
+    height: 70px;
+    width: 70px;
+}
+.weather{
     flex:1
 }
 
@@ -19,9 +37,14 @@
 }
 
 .hourTemp{
-    flex:3
+    flex:2
 }
 
 .hourRainProb{
-    flex:1
+    flex:1;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
 }

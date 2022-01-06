@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { AllInOneWD, Coord, locationModes, locationNameId } from '../interfaces';
+import {
+  AllInOneWD,
+  Coord,
+  locationModes,
+  locationNameId,
+} from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -18,14 +23,19 @@ export class DataService {
   }
 
   updateLocationOfflineData(location: AllInOneWD) {
-    let locations:AllInOneWD[]=JSON.parse(localStorage.getItem(environment.savedLocationsOfflineData) || "[]");
-    let lIndex = locations.findIndex(i=>{
-      return i.id===location.id
+    let locations: AllInOneWD[] = JSON.parse(
+      localStorage.getItem(environment.savedLocationsOfflineData) || '[]'
+    );
+    let lIndex = locations.findIndex((i) => {
+      return i.id === location.id;
     });
-    if(lIndex!==-1){
-      locations.splice(lIndex,1);
+    if (lIndex !== -1) {
+      locations.splice(lIndex, 1);
     }
-    localStorage.setItem(environment.savedLocationsOfflineData,JSON.stringify(([...locations,location])));
+    localStorage.setItem(
+      environment.savedLocationsOfflineData,
+      JSON.stringify([...locations, location])
+    );
   }
 
   getLocationsSubject() {
@@ -47,12 +57,12 @@ export class DataService {
       },
     });
   }
-  getAllInOne(l:Coord){
+  getAllInOne(l: Coord) {
     return this._httpService.get(environment.endPointAllInOne, {
       params: {
         lat: l.lat,
         lon: l.lon,
-        exclude: "minutely",
+        exclude: 'minutely',
         appid: environment.appid,
         units: environment.metric,
       },
@@ -68,12 +78,40 @@ export class DataService {
     });
   }
 
-  getOfflineData(locationNameId:locationNameId) {
+  getOfflineData(locationNameId: locationNameId) {
     let ls: AllInOneWD[] = JSON.parse(
       localStorage.getItem(environment.savedLocationsOfflineData) || '[]'
     );
     return ls.find((x) => {
       return x.id === locationNameId.id;
     });
+  }
+
+  removeLocation(locationNameId: locationNameId) {
+    // Delete from offlineData
+    let ls: AllInOneWD[] = JSON.parse(
+      localStorage.getItem(environment.savedLocationsOfflineData) || '[]'
+    );
+    let index = ls.findIndex((x) => {
+      return x.id === locationNameId.id;
+    });
+    if (index !== -1) {
+      ls.splice(index, 1);
+    }
+    localStorage.setItem(
+      environment.savedLocationsOfflineData,
+      JSON.stringify([...ls])
+    );
+      // Delete from nameId array
+    let lni: locationNameId[] = JSON.parse(
+      localStorage.getItem(environment.savedLocations) || '[]'
+    );
+    index = lni.findIndex((x) => {
+      return x.id === locationNameId.id;
+    });
+    if (index !== -1) {
+      lni.splice(index, 1);
+    }
+    this.updateLocations(lni);
   }
 }

@@ -1,17 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path
+            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+    </symbol>
+</svg>
 <div class="h100 hoursContainer">
     <div class="row" *ngIf="showAlert">
         <cacheAlert></cacheAlert>
     </div>
     <div *ngFor="let g of groupedData" class="p-2">
         <div class="dateHeader text-center p-2">
-            {{g.f | date}}
+
+            <div class="text-center">
+                {{g.f | date}}
+            </div>
+            <!--<button class="btn btn-sm btn-light">i</button>-->
+            <div class="">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
+                    <use xlink:href="#info-fill" />
+                </svg>
+            </div>
         </div>
         <div *ngFor="let h of g.hrs" class="hourContainer p-2">
             <div class="hourTime">{{h.transformedTime | date:'hh aa' }}</div>
-            <div class="hourTemp text-center">{{h.temp}}ºC | {{h.feels_like}}ºC</div>
-            <div class="iconWrapper"><img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+            <div class="hourTemp text-center">{{h.temp}}ºC </div>
+            <div class="hourTemp text-center">{{h.feels_like}}ºC </div>
+            <div class="weather"><img class="weatherIcon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
             </div>
-            <div class="hourRainProb">{{h.pop | percent}}</div>
+            <div class="hourRainProb">
+                {{h.pop | percent}}
+            </div>
         </div>
     </div>
 </div>

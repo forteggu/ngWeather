@@ -68,7 +68,8 @@ export class WeatherLocationComponent implements OnInit {
     this.mode = mode;
   }
   removeLocation() {
-    console.log('we remove the location', this.wLocation);
+    this.loading=true;
+    this._dataService.removeLocation(this.locationNameId);
   }
   cancelRemoveLocation() {
     this.mode = this.previousMode;
