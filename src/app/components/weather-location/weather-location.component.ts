@@ -6,6 +6,7 @@ import {
   locationNameId,
   AllInOneWD,
 } from 'src/app/interfaces';
+import { getWeatherIcon } from 'src/app/services/commons';
 import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'weatherLocation',
@@ -42,11 +43,35 @@ export class WeatherLocationComponent implements OnInit {
     this.showAlert = false;
     this.error = false;
     this.errorMessage = '';
+    this.fixMiscData(l);
+    this._dataService.updateLocationOfflineData(l);
+    this.wLocation = l;
+  }
+  /**
+   * Fix Times (dates), icons, name, id and date
+   * @param l response
+   */
+  fixMiscData(l:AllInOneWD){
     l.lastUpdated = new Date().toDateString();
     l.name=this.locationNameId.name;
     l.id=this.locationNameId.id;  
-    this._dataService.updateLocationOfflineData(l);
-    this.wLocation = l;
+    // Fix misc data for daily (forecast) structure
+    l.daily.map((d) => {
+      const date = new Date(d.dt*1000);
+      d.transformedTime= date;
+      d.weather[0].icon=getWeatherIcon(d.weather[0].icon);
+
+    });
+    // Fix misc data for hourly structure
+    l.hourly.map((h) => {
+      // Transform the weather icon
+      //h.weather[0].icon=this.icons;
+      h.weather[0].icon=getWeatherIcon(h.weather[0].icon);
+      // Transform the time to a usable format
+      const d = new Date(h.dt*1000);
+      h.transformedTime=d;
+    });
+
   }
   reportError(e: ErrorResponse) {
     this.loading = false;

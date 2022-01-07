@@ -11,10 +11,10 @@
     <div *ngFor="let d of wLocation" class="dayContainer p-2">
         <div class="dayTime"> {{d.transformedTime | date:'MMM d'}}</div>
         <div class="dayTemp text-center">[{{d.temp.min | number:'1.0-0'}}|{{d.temp.max | number:'1.0-0'}}]ºC </div>
-        <div class="weather"><img class="weatherIcon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+        <div class="weather"><img class="weatherIcon" src="{{d.weather[0].icon}}" alt="">
         </div>
         <div class="dayRainProb">
-            <img class="rainProbIco" src="https://img.icons8.com/doodle/48/000000/rainwater-catchment.png"/>
+            <img class="rainProbIco" src="{{icons.rainProb}}"/>
             {{d.pop | percent}}
         </div>
     </div>

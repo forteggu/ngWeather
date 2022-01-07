@@ -16,26 +16,20 @@ export class LocationWeatherHourlyComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.wLocation);
     //group data
     this.groupData();
   }
   groupData() {
     if (this.wLocation && this.wLocation.length > 0) {
       this.wLocation.map((h) => {
-        // Transform the weather icon
-        //h.weather[0].icon=this.icons;
-        h.weather[0].icon=getWeatherIcon(h.weather[0].icon);
         // Transform the time to a usable format
-        const d = new Date(h.dt*1000);
         const i = this.groupedData.findIndex((g) => {
-          return g.f.toLocaleDateString() === d.toLocaleDateString();
+          return g.f.toLocaleDateString() === h.transformedTime!.toLocaleDateString();
         });
-        h.transformedTime=d;
         if (i !== -1) {
           this.groupedData[i].hrs.push(h);
         }else{
-          this.groupedData.push({f:d,hrs:[h]})
+          this.groupedData.push({f:h.transformedTime!,hrs:[h]})
         }
       });
     }

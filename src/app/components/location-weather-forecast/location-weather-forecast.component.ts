@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AllInOneWD, Current, Daily } from 'src/app/interfaces';
+import { AllInOneWD, Current, Daily, Icon } from 'src/app/interfaces';
+import { getWeatherIcon } from 'src/app/services/commons';
 
 @Component({
   selector: 'locationWeatherForecast',
@@ -9,19 +10,11 @@ import { AllInOneWD, Current, Daily } from 'src/app/interfaces';
 export class LocationWeatherForecastComponent implements OnInit {
   @Input("data") wLocation:Daily[]=[];
   @Input('showAlert') showAlert: boolean = false;
+  icons=Icon;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.fixDate();
-  }
-  fixDate() {
-    if (this.wLocation && this.wLocation.length > 0) {
-      this.wLocation.map((d) => {
-        const date = new Date(d.dt*1000);
-        d.transformedTime= date;
-        console.log(date);
-      });
-    }
+    
   }
 }
