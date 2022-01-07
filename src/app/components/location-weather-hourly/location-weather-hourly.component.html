@@ -1,8 +1,5 @@
-
 <div class="h100 hoursContainer">
-    <div class="row" *ngIf="showAlert">
-        <cacheAlert></cacheAlert>
-    </div>
+    <cacheAlert></cacheAlert>
     <div *ngFor="let g of groupedData" class="p-2">
         <div class="dateHeader text-center p-2">
             <div class="text-center">
@@ -23,7 +20,7 @@
                 <img class="weatherIcon" src="{{h.weather[0].icon}}" />
             </div>
             <div class="hourRainProb">
-                <img class="rainProbIco" src="{{icons.rainProb}}"/>
+                <img class="rainProbIco" src="{{icons.rainProb}}" />
                 {{h.pop | percent}}
             </div>
         </div>

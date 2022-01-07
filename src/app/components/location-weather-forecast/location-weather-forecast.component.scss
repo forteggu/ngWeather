@@ -1,25 +1,20 @@
+.daysContainer{
+    padding: 1em;
+}
 .dayContainer{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
     align-content: space-around;
+    font-size: 1.17rem;
 }
 .dateHeader{
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
 }
-.dateHeader>div:first-child{
-    flex:9;
-}
-.dateHeader>div:last-child{
-    color: aquamarine;
-}
-.dateHeader>div:last-child:hover{
-    transform: scale(1.2);
-    cursor: pointer;
-}
+
 .weather{
     flex:2
 }
@@ -29,7 +24,7 @@
 }
 
 .dayTemp{
-    flex:2
+    flex:1;
 }
 .dayRainProb{
     flex:2;

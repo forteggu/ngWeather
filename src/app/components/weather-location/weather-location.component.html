@@ -27,16 +27,16 @@
             </svg>
         </button>
     </div>
-    <div *ngIf="loading" class="h100">
+    <div *ngIf="loading" class="h100 overflow-y-scroll">
         <locationUpdating [locationName]="locationNameId.name"></locationUpdating>
     </div>
-    <div *ngIf="mode===localModes.weather" class="h100">
+    <div *ngIf="mode===localModes.weather" class="h100 overflow-y-scroll">
         <locationWeatherOverview [data]="{id:wLocation.id, name:wLocation.name, lastUpdated:wLocation.lastUpdated, weather: wLocation.current}" [showAlert]="showAlert"></locationWeatherOverview>
     </div>
     <div *ngIf="mode===localModes.hourly" class="h100 overflow-y-scroll">
         <locationWeatherHourly [data]="wLocation.hourly" [showAlert]="showAlert"></locationWeatherHourly>
     </div>
-    <div *ngIf="mode===localModes.forecast" class="h100">
+    <div *ngIf="mode===localModes.forecast" class="h100 overflow-y-scroll">
         <locationWeatherForecast [data]="wLocation.daily" [showAlert]="showAlert"></locationWeatherForecast>
     </div>
     <div class="row text-center mt-1">

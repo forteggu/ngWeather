@@ -114,6 +114,8 @@ export class WeatherLocationComponent implements OnInit {
     l.lastUpdated = new Date().toDateString();
     l.name = this.locationNameId.name;
     l.id = this.locationNameId.id;
+    // a
+    l.current.weather[0].icon=getWeatherIcon(l.current.weather[0].icon);
     // Fix misc data for daily (forecast) structure
     l.daily.map((d) => {
       const date = new Date(d.dt * 1000);
@@ -135,6 +137,7 @@ export class WeatherLocationComponent implements OnInit {
     const offlineData = this._dataService.getOfflineData(this.locationNameId);
     if (offlineData) {
       this.wLocation = offlineData;
+      this.updateWeatherLocationTheme();
       this.showAlert = true;
     } else {
       this.errorMessage =

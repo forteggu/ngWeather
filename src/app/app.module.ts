@@ -13,6 +13,8 @@ import { LocationWeatherForecastComponent } from './components/location-weather-
 import { LocationUpdatingComponent } from './components/location-updating/location-updating.component';
 import { LocationErrorComponent } from './components/location-error/location-error.component';
 import { CacheAlertComponent } from './components/cache-alert/cache-alert.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,12 @@ import { CacheAlertComponent } from './components/cache-alert/cache-alert.compon
     LocationErrorComponent,
     CacheAlertComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: environment.production,
+  // Register the ServiceWorker as soon as the app is stable
+  // or after 30 seconds (whichever comes first).
+  registrationStrategy: 'registerWhenStable:30000'
+})],
   providers: [],
   bootstrap: [AppComponent],
 })

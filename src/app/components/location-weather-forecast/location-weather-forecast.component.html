@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 </svg>
 <div class="h100 daysContainer">
-    <div class="row" *ngIf="showAlert">
+    <div class="row">
         <cacheAlert></cacheAlert>
     </div>
     <div *ngFor="let d of wLocation" class="dayContainer p-2">
@@ -10,7 +10,7 @@
         <div class="weather"><img class="weatherIcon" src="{{d.weather[0].icon}}" alt="">
         </div>
         <div class="dayRainProb">
-            <img class="rainProbIco" src="{{icons.rainProb}}"/>
+            <img class="rainProbIco" src="{{icons.rainProb}}" />
             {{d.pop | percent}}
         </div>
     </div>

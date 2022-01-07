@@ -4,11 +4,11 @@
       <weatherLocation [location]="wl"></weatherLocation>
     </div>
   </div>
-  <button class="btn btn-dark" (click)="isDisplayingInfo=true" id="displayInfoButton">
-    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
+  <button class="btn" (click)="isDisplayingInfo=true" id="displayInfoButton">
+    <svg class="bi flex-shrink-0" width="24" height="24" role="img" aria-label="Info:">
       <use xlink:href="#info-fill" />
     </svg></button>
-  <button *ngIf="isAddingNewLocation===false" class="btn btn-dark" (click)="isAddingNewLocation=true"
+  <button *ngIf="isAddingNewLocation===false" class="btn" (click)="isAddingNewLocation=true"
     id="addNewLocationButton"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
       class="bi bi-plus-lg" viewBox="0 0 16 16">
       <path fill-rule="evenodd"

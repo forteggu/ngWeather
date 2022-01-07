@@ -15,6 +15,7 @@
 
 .locationAndDate h1{
     font-size: 3em;
+    font-weight: bold;
 }
 .locationAndDate{
     flex-grow: 3;  
@@ -23,14 +24,16 @@
 
 .temperature{
     font-size: 4em ;
-    flex-grow: 4;
+    flex-grow: 3;
 }
 .weatherDescription{
-    flex-grow: 1;
+    flex-grow: 2;
     vertical-align: middle;
+    font-size: 1.25em;
 }
 .furtherDetail{
     align-items: stretch;
     align-content: stretch;
     flex-grow: 2;
+    font-size: 1.25em;
 }

@@ -1,10 +1,8 @@
 
 <div *ngIf="wLocation.name" class="h100 locationContent">
-    <div class="row" *ngIf="showAlert">
         <cacheAlert></cacheAlert>
-    </div>
     <div class="row locationAndDate text-center">
-        <h1>{{wLocation.name}}</h1>
+        <h1>{{wLocation.name | titlecase}}</h1>
         <div>{{wLocation.lastUpdated}}</div>
     </div>
     <div class="row temperature m-1 text-center">
@@ -14,7 +12,10 @@
     </div>
     <div class="row weatherDescription m-1 text-center">
         <div>
-            {{wLocation.weather.weather[0].description}}
+            <img src="{{wLocation.weather.weather[0].icon}}" alt="">
+        </div>
+        <div>
+            {{wLocation.weather.weather[0].description | titlecase}}
         </div>
     </div>
     <div class="row furtherDetail text-center">

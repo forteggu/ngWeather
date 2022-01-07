@@ -1,9 +1,10 @@
 div.wrapper {
   padding: 0.5em;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #FFFFF3;
   color: white;
   height: 100%;
 }
+
 div.wrapper > nav > button {
   margin-right: 1em;
 }
@@ -28,6 +29,8 @@ div.wrapper > nav > button {
   bottom: 0.5em;
   height: 3.5em;
   width: 3.5em;
+  background-color: #696963;
+  color: #FFFFF3;
 }
 #displayInfoButton {
   position: fixed;
@@ -35,6 +38,8 @@ div.wrapper > nav > button {
   bottom: 0.5em;
   height: 3.5em;
   width: 3.5em;
+  background-color: #696963;
+  color: #FFFFF3;
 }
 .customModal {
   width: 100%;
@@ -76,6 +81,9 @@ div.wrapper > nav > button {
 @media only screen and (min-width: 500px) {
   .locationContainer {
     width: 80vw;
+  }
+  .cache-alert{
+    width: 25vw;
   }
 }
 
