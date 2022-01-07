@@ -23,19 +23,19 @@
 }
 
 .weatherLocationContainer {
-    background: rgb(205, 205, 205);
-    background: linear-gradient(
-      to top,
-      rgba(205, 205, 205, 1) 0%,
-      rgba(255, 255, 255, 1) 50%,
-      rgba(122, 212, 255, 1) 100%
-    );
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.7);
+  background: rgb(205, 205, 205);
+  background: linear-gradient(
+    to top,
+    rgba(205, 205, 205, 1) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(122, 212, 255, 1) 100%
+  );
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .clearSkyDay {
-  background: linear-gradient(to bottom, #90dffe 0%, #38a3d1 100%);
+  background: linear-gradient(to top, #90dffe 0%, #38a3d1 100%);
   color: rgba(0, 0, 0, 0.7);
   font-weight: bold;
 }
@@ -45,24 +45,53 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-.thunderstorm {
-  background-image: url("../../../assets/backgrounds/thunderstorm.jpg");
-  background-size: cover;
-  color: #dbeffb;
-  font-weight: bold;
+.thunderstormDay {
+  background-image: url("../../../assets/backgrounds/thunderstorm.png"),
+  linear-gradient(to top, #1dbfff 0%, rgb(18,34,51) 100%);
+background-size: cover;
+font-weight: bold;
+color: rgba(0, 0, 0, 0.7);
 }
+.thunderstormNight {
+  background-image: url("../../../assets/backgrounds/thunderstorm.png"),
+  linear-gradient(to bottom, #020111 10%, #3a3a52 100%);
+font-weight: bold;
+color: rgba(255, 255, 255, 0.7);
+}
+
 
 .fewScatteredCloudsDay {
   background-image: url("../../../assets/backgrounds/fewScatteredClouds.png"),
-    linear-gradient(to bottom, #90dffe 0%, #38a3d1 100%);
+    linear-gradient(to top, #90dffe 0%, #38a3d1 100%);
+  background-size: cover;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+}
+.fewScatteredCloudsNight {
+  background-image: url("../../../assets/backgrounds/fewScatteredClouds.png"),
+  linear-gradient(to bottom, #020111 10%, #3a3a52 100%);
+font-weight: bold;
+color: rgba(255, 255, 255, 0.7);
+}
+
+.brokenDay {
+  background-image: url("../../../assets/backgrounds/broken.png"),
+    linear-gradient(to top, #90dffe 0%, #38a3d1 100%);
   background-size: cover;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.7);
 }
 
+.brokenNight {
+  background-image: url("../../../assets/backgrounds/broken.png"),
+  linear-gradient(to bottom, #020111 10%, #3a3a52 100%);
+font-weight: bold;
+color: rgba(255, 255, 255, 0.7);
+}
+
 .rainDay {
   background-image: url("../../../assets/backgrounds/rain.png"),
-    linear-gradient(to bottom, #90dffe 0%, #38a3d1 100%);
+    linear-gradient(to top, #90dffe 0%, #38a3d1 100%);
   background-size: cover;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.7);
@@ -76,17 +105,24 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-.showerRain {
-  background-image: url("../../../assets/backgrounds/showerRain.jpg"),
-    linear-gradient(to bottom, #90dffe 0%, #38a3d1 100%);
+.showerRainDay {
+  background-image: url("../../../assets/backgrounds/showerRain.png"),
+    linear-gradient(to top, #90dffe 0%, #38a3d1 100%);
   background-size: cover;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.7);
 }
+.showerRainNight {
+  background-image: url("../../../assets/backgrounds/showerRain.png"),
+    linear-gradient(to bottom, #020111 10%, #3a3a52 100%);
+  background-size: cover;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+}
 
 .snowDay {
   background-image: url("../../../assets/backgrounds/snow.png"),
-    linear-gradient(to bottom, #90dffe 0%, #38a3d1 100%);
+    linear-gradient(to top, #90dffe 0%, #38a3d1 100%);
   background-size: cover;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.7);
@@ -112,8 +148,17 @@
 }
 
 .mistNight {
-    background: rgb(55,55,55);
-    background: linear-gradient(to top, rgba(55,55,55,1) 0%, rgba(191,191,191,1) 50%, rgba(5,12,54,1) 100%);
-    color: rgba(255,255,255,0.8);
-    font-weight: bold;
+  background: rgb(55, 55, 55);
+  background: linear-gradient(
+    to top,
+    rgba(55, 55, 55, 1) 0%,
+    rgba(191, 191, 191, 1) 50%,
+    rgba(5, 12, 54, 1) 100%
+  );
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: bold;
+}
+
+.defaultTheme{
+    background-color: #008ac0;
 }

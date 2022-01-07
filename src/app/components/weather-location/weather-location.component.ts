@@ -23,6 +23,7 @@ export class WeatherLocationComponent implements OnInit {
   showAlert: boolean = false;
   error: boolean = false;
   errorMessage: string = '';
+  theme: string = '';
   constructor(private _dataService: DataService) {}
 
   ngOnInit(): void {
@@ -46,32 +47,88 @@ export class WeatherLocationComponent implements OnInit {
     this.fixMiscData(l);
     this._dataService.updateLocationOfflineData(l);
     this.wLocation = l;
+    this.updateWeatherLocationTheme();
+  }
+  updateWeatherLocationTheme() {
+    switch (this.wLocation.current.weather[0]?.icon) {
+      case '01d':
+        this.theme = 'clearSkyDay';
+        break;
+      case '01n':
+        this.theme = 'clearSkyNight';
+        break;
+      case '02d':
+      case '03d':
+        this.theme = 'fewScatteredCloudsDay';
+        break;
+      case '02n':
+      case '03n':
+        this.theme = 'fewScatteredCloudsNight';
+        break;
+      case '04d':
+        this.theme = 'brokenDay';
+        break;
+      case '04n':
+        this.theme = 'brokenNight';
+        break;
+      case '09d':
+        this.theme = 'showerRainDay';
+        break;
+      case '09n':
+        this.theme = 'showerRainNight';
+        break;
+      case '10d':
+        this.theme = 'rainDay';
+        break;
+      case '10n':
+        this.theme = 'rainNight';
+        break;
+      case '11d':
+        this.theme = 'thunderstormDay';
+        break;
+      case '11n':
+        this.theme = 'thunderstormNight';
+        break;
+      case '13d':
+        this.theme = 'snowDay';
+        break;
+      case '13n':
+        this.theme = 'snowNight';
+        break;
+      case '50d':
+        this.theme = 'mistDay';
+        break;
+      case '50n':
+        this.theme = 'mistNight';
+        break;
+      default:
+        this.theme = 'defaultTheme';
+        break;
+    }
   }
   /**
    * Fix Times (dates), icons, name, id and date
    * @param l response
    */
-  fixMiscData(l:AllInOneWD){
+  fixMiscData(l: AllInOneWD) {
     l.lastUpdated = new Date().toDateString();
-    l.name=this.locationNameId.name;
-    l.id=this.locationNameId.id;  
+    l.name = this.locationNameId.name;
+    l.id = this.locationNameId.id;
     // Fix misc data for daily (forecast) structure
     l.daily.map((d) => {
-      const date = new Date(d.dt*1000);
-      d.transformedTime= date;
-      d.weather[0].icon=getWeatherIcon(d.weather[0].icon);
-
+      const date = new Date(d.dt * 1000);
+      d.transformedTime = date;
+      d.weather[0].icon = getWeatherIcon(d.weather[0].icon);
     });
     // Fix misc data for hourly structure
     l.hourly.map((h) => {
       // Transform the weather icon
       //h.weather[0].icon=this.icons;
-      h.weather[0].icon=getWeatherIcon(h.weather[0].icon);
+      h.weather[0].icon = getWeatherIcon(h.weather[0].icon);
       // Transform the time to a usable format
-      const d = new Date(h.dt*1000);
-      h.transformedTime=d;
+      const d = new Date(h.dt * 1000);
+      h.transformedTime = d;
     });
-
   }
   reportError(e: ErrorResponse) {
     this.loading = false;
@@ -93,7 +150,7 @@ export class WeatherLocationComponent implements OnInit {
     this.mode = mode;
   }
   removeLocation() {
-    this.loading=true;
+    this.loading = true;
     this._dataService.removeLocation(this.locationNameId);
   }
   cancelRemoveLocation() {
