@@ -1,13 +1,13 @@
-export interface locationNameId{
-    id:number;
-    name:string;
-    coord:Coord;
+export interface locationNameId {
+  id: number;
+  name: string;
+  coord: Coord;
 }
-export interface Overview{
-    id: number;
-    name: string;
-    lastUpdated: string;
-    weather: Current;
+export interface Overview {
+  id: number;
+  name: string;
+  lastUpdated: string;
+  weather: Current;
 }
 export enum locationModes {
   weather,
@@ -109,10 +109,10 @@ export interface AllInOneWD {
 }
 
 export interface Rain {
-    "1h": number;
+  '1h': number;
 }
 export interface Snow {
-    "1h": number;
+  '1h': number;
 }
 export interface Current {
   dt: number;
@@ -140,7 +140,7 @@ export interface Weather {
   id: number;
   main: Main;
   description: Description;
-  icon: Icon;
+  icon: string;
 }
 
 export enum Description {
@@ -151,13 +151,26 @@ export enum Description {
 }
 
 export enum Icon {
-  The01D = '01d',
-  The01N = '01n',
-  The02D = '02d',
-  The02N = '02n',
-  The04D = '04d',
-  The04N = '04n',
-  The10D = '10d',
+  The01D = '../../../assets/icons/clearFewDay.png',
+  The01N = '../../../assets/icons/clearFewNight.png',
+  The02D = '../../../assets/icons/clearFewDay.png',
+  The02N = '../../../assets/icons/clearFewNight.png',
+  The03D = '../../../assets/icons/scatteredBrokenDay.png',
+  The03N = '../../../assets/icons/scatteredBrokenNight.png',
+  The04D = '../../../assets/icons/scatteredBrokenDay.png',
+  The04N = '../../../assets/icons/scatteredBrokenNight.png',
+  The09D = '../../../assets/icons/showerRain.png',
+  The09N = '../../../assets/icons/showerRain.png',
+  The10D = '../../../assets/icons/rain.png',
+  The10N = '../../../assets/icons/rain.png',
+  The11D = '../../../assets/icons/thunderstorm.png',
+  The11N = '../../../assets/icons/thunderstorm.png',
+  The13D = '../../../assets/icons/snow.png',
+  The13N = '../../../assets/icons/snow.png',
+  The50D = '../../../assets/icons/mist.png',
+  The50N = '../../../assets/icons/mist.png',
+  error = '../../../assets/icons/error.png',
+  rainProb ='../../../assets/icons/rainProb.png',
 }
 
 export interface Daily {
@@ -180,7 +193,7 @@ export interface Daily {
   pop: number;
   uvi: number;
   rain?: number;
-  transformedTime?:Date;
+  transformedTime?: Date;
 }
 
 export interface FeelsLike {

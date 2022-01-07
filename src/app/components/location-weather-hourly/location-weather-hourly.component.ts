@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AllInOneWD, Current } from 'src/app/interfaces';
+import { AllInOneWD, Current, Icon } from 'src/app/interfaces';
+import { getWeatherIcon } from 'src/app/services/commons';
 
 @Component({
   selector: 'locationWeatherHourly',
@@ -10,6 +11,7 @@ export class LocationWeatherHourlyComponent implements OnInit {
   @Input('data') wLocation: Current[] = [];
   @Input('showAlert') showAlert: boolean = false;
   groupedData: { f: Date; hrs: Current[] }[] = [];
+  icons=Icon;
 
   constructor() {}
 
@@ -21,6 +23,10 @@ export class LocationWeatherHourlyComponent implements OnInit {
   groupData() {
     if (this.wLocation && this.wLocation.length > 0) {
       this.wLocation.map((h) => {
+        // Transform the weather icon
+        //h.weather[0].icon=this.icons;
+        h.weather[0].icon=getWeatherIcon(h.weather[0].icon);
+        // Transform the time to a usable format
         const d = new Date(h.dt*1000);
         const i = this.groupedData.findIndex((g) => {
           return g.f.toLocaleDateString() === d.toLocaleDateString();

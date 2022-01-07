@@ -20,14 +20,6 @@
     transform: scale(1.2);
     cursor: pointer;
 }
-.weatherIcon{
-    height: 70px;
-    width: 70px;
-}
-.rainProbIco{
-    height: 70px;
-    width: 70px;
-}
 .weather{
     flex:2
 }
@@ -39,12 +31,6 @@
 .dayTemp{
     flex:2
 }
-
-.rainProbIco{
-    height: 2em;
-    width: 2em;
-}
-
 .dayRainProb{
     flex:2;
     display:flex;
