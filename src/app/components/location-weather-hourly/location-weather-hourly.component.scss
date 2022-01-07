@@ -25,15 +25,15 @@
     width: 70px;
 }
 .rainProbIco{
-    height: 70px;
-    width: 70px;
+    height: 2em;
+    width: 2em;
 }
 .weather{
-    flex:1
+    flex:2
 }
 
 .hourTime{
-    flex:1
+    flex:2
 }
 
 .hourTemp{
@@ -41,7 +41,7 @@
 }
 
 .hourRainProb{
-    flex:1;
+    flex:2;
     display:flex;
     flex-flow:row nowrap;
     justify-content: space-around;

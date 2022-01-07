@@ -5,17 +5,17 @@
     </div>
     <div class="row locationAndDate text-center">
         <h1>{{wLocation.name}}</h1>
-        <p>{{wLocation.lastUpdated}}</p>
+        <div>{{wLocation.lastUpdated}}</div>
     </div>
     <div class="row temperature m-1 text-center">
-        <p>
+        <div>
             {{wLocation.weather.temp | number:'1.0-0'}}ºC
-        </p>
+        </div>
     </div>
     <div class="row weatherDescription m-1 text-center">
-        <p>
+        <div>
             {{wLocation.weather.weather[0].description}}
-        </p>
+        </div>
     </div>
     <div class="row furtherDetail text-center">
         <!--(add icon to display info about what's each thing)-->

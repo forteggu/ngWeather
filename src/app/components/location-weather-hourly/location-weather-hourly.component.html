@@ -10,24 +10,25 @@
     </div>
     <div *ngFor="let g of groupedData" class="p-2">
         <div class="dateHeader text-center p-2">
-
             <div class="text-center">
                 {{g.f | date}}
             </div>
-            <!--<button class="btn btn-sm btn-light">i</button>-->
+            <!--
             <div class="">
                 <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
                     <use xlink:href="#info-fill" />
                 </svg>
-            </div>
+            </div>-->
         </div>
         <div *ngFor="let h of g.hrs" class="hourContainer p-2">
             <div class="hourTime">{{h.transformedTime | date:'hh aa' }}</div>
             <div class="hourTemp text-center">{{h.temp}}ºC </div>
-            <div class="hourTemp text-center">{{h.feels_like}}ºC </div>
-            <div class="weather"><img class="weatherIcon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+            <div class="weather">
+
+                <img class="weatherIcon" src="https://img.icons8.com/doodle/50/000000/sun--v1.png" />
             </div>
             <div class="hourRainProb">
+                <img class="rainProbIco" src="https://img.icons8.com/doodle/48/000000/rainwater-catchment.png"/>
                 {{h.pop | percent}}
             </div>
         </div>

@@ -1,24 +1,119 @@
-.customContainer{
-    display: flex;
-    flex-flow: column nowrap;
+.customContainer {
+  display: flex;
+  flex-flow: column nowrap;
 }
-.button_list{
-    display: flex;
-    justify-content: space-between;
-    margin: 0.25em
+.button_list {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.25em;
 }
-.button_list>button{
-    width: auto;
-    margin-top: 0.25em;
+.button_list > button {
+  width: auto;
+  margin-top: 0.25em;
+}
+.button_list > button:first-child() {
+  //align-self: flex-end;
+}
 
+.deleteLocationContainer h1 {
+  font-size: 2em;
 }
-.button_list>button:first-child(){
-    //align-self: flex-end;
+.deleteLocationContainer .button_list {
+  justify-content: space-around;
 }
 
-.deleteLocationContainer h1{
-   font-size: 2em;
+.weatherLocationContainer {
+    background: rgb(205, 205, 205);
+    background: linear-gradient(
+      to top,
+      rgba(205, 205, 205, 1) 0%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(122, 212, 255, 1) 100%
+    );
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.7);
 }
-.deleteLocationContainer .button_list{
-   justify-content: space-around;
+
+.clearSkyDay {
+  background: linear-gradient(to bottom, #90dffe 0%, #38a3d1 100%);
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+}
+.clearSkyNight {
+  background: linear-gradient(to bottom, #020111 10%, #3a3a52 100%);
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.thunderstorm {
+  background-image: url("../../../assets/backgrounds/thunderstorm.jpg");
+  background-size: cover;
+  color: #dbeffb;
+  font-weight: bold;
+}
+
+.fewScatteredCloudsDay {
+  background-image: url("../../../assets/backgrounds/fewScatteredClouds.png"),
+    linear-gradient(to bottom, #90dffe 0%, #38a3d1 100%);
+  background-size: cover;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.rainDay {
+  background-image: url("../../../assets/backgrounds/rain.png"),
+    linear-gradient(to bottom, #90dffe 0%, #38a3d1 100%);
+  background-size: cover;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.rainNight {
+  background-image: url("../../../assets/backgrounds/rain.png"),
+    linear-gradient(to bottom, #020111 10%, #3a3a52 100%);
+  background-size: cover;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.showerRain {
+  background-image: url("../../../assets/backgrounds/showerRain.jpg"),
+    linear-gradient(to bottom, #90dffe 0%, #38a3d1 100%);
+  background-size: cover;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.snowDay {
+  background-image: url("../../../assets/backgrounds/snow.png"),
+    linear-gradient(to bottom, #90dffe 0%, #38a3d1 100%);
+  background-size: cover;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+}
+.snowNight {
+  background-image: url("../../../assets/backgrounds/snow.png"),
+    linear-gradient(to bottom, #020111 10%, #3a3a52 100%);
+  background-size: cover;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mistDay {
+  background: rgb(205, 205, 205);
+  background: linear-gradient(
+    to top,
+    rgba(205, 205, 205, 1) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(122, 212, 255, 1) 100%
+  );
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.mistNight {
+    background: rgb(55,55,55);
+    background: linear-gradient(to top, rgba(55,55,55,1) 0%, rgba(191,191,191,1) 50%, rgba(5,12,54,1) 100%);
+    color: rgba(255,255,255,0.8);
+    font-weight: bold;
 }

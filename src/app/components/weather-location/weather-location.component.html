@@ -1,7 +1,7 @@
 <div *ngIf="error" class="h100">
     <locationError [msg]="errorMessage"></locationError>
 </div>
-<div *ngIf="mode!==localModes.delete && !error" class="container h100 customContainer">
+<div *ngIf="mode!==localModes.delete && !error" id="weatherLocationContainer_{{locationNameId.id}}" class="container h100 customContainer weatherLocationContainer">
     <div class="row button_list">
         <button [disabled]="loading" (click)="changeMode(localModes.weather)" class="btn btn-light btn-lg toggleDetails">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
