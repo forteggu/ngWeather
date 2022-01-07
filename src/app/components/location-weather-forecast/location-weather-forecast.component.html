@@ -9,11 +9,12 @@
         <cacheAlert></cacheAlert>
     </div>
     <div *ngFor="let d of wLocation" class="dayContainer p-2">
-        <div class="dayTime"> {{d.transformedTime | date}}</div>
-        <div class="dayTemp text-center">[{{d.temp.min}}|{{d.temp.min}}]ºC </div>
+        <div class="dayTime"> {{d.transformedTime | date:'MMM d'}}</div>
+        <div class="dayTemp text-center">[{{d.temp.min | number:'1.0-0'}}|{{d.temp.max | number:'1.0-0'}}]ºC </div>
         <div class="weather"><img class="weatherIcon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
         </div>
         <div class="dayRainProb">
+            <img class="rainProbIco" src="https://img.icons8.com/doodle/48/000000/rainwater-catchment.png"/>
             {{d.pop | percent}}
         </div>
     </div>

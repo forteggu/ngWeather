@@ -22,7 +22,7 @@
         </div>
         <div *ngFor="let h of g.hrs" class="hourContainer p-2">
             <div class="hourTime">{{h.transformedTime | date:'hh aa' }}</div>
-            <div class="hourTemp text-center">{{h.temp}}ºC </div>
+            <div class="hourTemp text-center">{{h.temp | number:'1.0-0'}}ºC </div>
             <div class="weather">
 
                 <img class="weatherIcon" src="https://img.icons8.com/doodle/50/000000/sun--v1.png" />

@@ -12,14 +12,17 @@
 }
 .dateHeader>div:first-child{
     flex:9;
+    padding: 0.5em;
+    font-weight: bolder;
+    font-size: 1.5em;
 }
-.dateHeader>div:last-child{
+/*.dateHeader>div:last-child{
     color: aquamarine;
 }
 .dateHeader>div:last-child:hover{
     transform: scale(1.2);
     cursor: pointer;
-}
+}*/
 .weatherIcon{
     height: 70px;
     width: 70px;
@@ -41,10 +44,10 @@
 }
 
 .hourRainProb{
-    flex:2;
+    flex:3;
     display:flex;
     flex-flow:row nowrap;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     align-content: space-around;
 }

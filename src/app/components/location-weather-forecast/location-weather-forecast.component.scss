@@ -29,22 +29,27 @@
     width: 70px;
 }
 .weather{
-    flex:1
+    flex:2
 }
 
 .dayTime{
-    flex:1
+    flex:2
 }
 
 .dayTemp{
     flex:2
 }
 
+.rainProbIco{
+    height: 2em;
+    width: 2em;
+}
+
 .dayRainProb{
-    flex:1;
+    flex:2;
     display:flex;
     flex-flow:row nowrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     align-content: space-around;
 }
