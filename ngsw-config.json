@@ -3,7 +3,7 @@
   "index": "/index.html",
   "assetGroups": [
     {
-      "name": "NgWeather",
+      "name": "app",
       "installMode": "prefetch",
       "resources": {
         "files": [
@@ -11,8 +11,7 @@
           "/index.html",
           "/manifest.webmanifest",
           "/*.css",
-          "/*.js",
-          "/assets/*"
+          "/*.js"
         ]
       }
     },

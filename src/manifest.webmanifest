@@ -1,6 +1,6 @@
 {
-  "name": "ngWeather",
-  "short_name": "ngWeather",
+  "name": "weatherAppAngular",
+  "short_name": "weatherAppAngular",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
