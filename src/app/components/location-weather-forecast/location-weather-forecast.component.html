@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 </svg>
 <div class="h100 daysContainer">
-    <div class="row">
+    <div *ngIf="showAlert" class="row">
         <cacheAlert></cacheAlert>
     </div>
     <div *ngFor="let d of wLocation" class="dayContainer p-2">

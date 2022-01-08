@@ -1,6 +1,8 @@
 
 <div *ngIf="wLocation.name" class="h100 locationContent">
+    <div *ngIf="showAlert"  class="row">
         <cacheAlert></cacheAlert>
+    </div>    
     <div class="row locationAndDate text-center">
         <h1>{{wLocation.name | titlecase}}</h1>
         <div>{{wLocation.lastUpdated}}</div>

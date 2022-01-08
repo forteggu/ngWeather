@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, throwIfEmpty } from 'rxjs';
 import {
   ErrorResponse,
   locationModes,
@@ -44,13 +44,15 @@ export class WeatherLocationComponent implements OnInit {
     this.showAlert = false;
     this.error = false;
     this.errorMessage = '';
-    this.fixMiscData(l);
     this._dataService.updateLocationOfflineData(l);
+    this.updateWeatherLocationTheme(l);
+    this.fixMiscData(l);
     this.wLocation = l;
-    this.updateWeatherLocationTheme();
   }
-  updateWeatherLocationTheme() {
-    switch (this.wLocation.current.weather[0]?.icon) {
+  updateWeatherLocationTheme(l?: AllInOneWD) {
+    l = l || this.wLocation;
+    let icon = l.current.weather[0].icon;
+    switch (icon) {
       case '01d':
         this.theme = 'clearSkyDay';
         break;
@@ -110,12 +112,13 @@ export class WeatherLocationComponent implements OnInit {
    * Fix Times (dates), icons, name, id and date
    * @param l response
    */
-  fixMiscData(l: AllInOneWD) {
+  fixMiscData(l?: AllInOneWD) {
+    l = l || this.wLocation;
     l.lastUpdated = new Date().toDateString();
     l.name = this.locationNameId.name;
     l.id = this.locationNameId.id;
     // a
-    l.current.weather[0].icon=getWeatherIcon(l.current.weather[0].icon);
+    l.current.weather[0].icon = getWeatherIcon(l.current.weather[0].icon);
     // Fix misc data for daily (forecast) structure
     l.daily.map((d) => {
       const date = new Date(d.dt * 1000);
@@ -138,6 +141,7 @@ export class WeatherLocationComponent implements OnInit {
     if (offlineData) {
       this.wLocation = offlineData;
       this.updateWeatherLocationTheme();
+      this.fixMiscData();
       this.showAlert = true;
     } else {
       this.errorMessage =

@@ -1,5 +1,7 @@
 <div class="h100 hoursContainer">
-    <cacheAlert></cacheAlert>
+    <div *ngIf="showAlert" class="row">
+        <cacheAlert></cacheAlert>
+    </div>
     <div *ngFor="let g of groupedData" class="p-2">
         <div class="dateHeader text-center p-2">
             <div class="text-center">
