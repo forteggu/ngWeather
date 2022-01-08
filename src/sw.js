@@ -1,4 +1,4 @@
-const CACHE_NAME = "version-1 (Dec)";
+const CACHE_NAME = "version-1.0";
 const urlsToCache = [
   "/assets/backgrounds/broken.png",
   "/assets/backgrounds/fewScatteredClouds.png",

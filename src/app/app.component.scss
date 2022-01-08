@@ -70,6 +70,12 @@ div.wrapper > nav > button {
   flex: 6;
 }
 
+/* Extra small devices VERTICALLY (phones, 600px and down) */
+@media only screen and (max-height: 792px) {
+  #modalDisplayInfo {
+    align-items: flex-start;
+  }
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 500px) {
   .locationContainer {
